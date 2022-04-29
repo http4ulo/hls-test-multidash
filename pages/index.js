@@ -1,7 +1,15 @@
 import Head from 'next/head'
 import VideoPlayer from '../components/video-player'
+import axios from 'axios'
+import { useEffect, useState } from 'react';
 
-export default function Home() {
+export default function Home(props) {
+  const [streamingUrl, setStreamingUrl] = useState('');
+
+  // useEffect(() => {
+
+  // }, [streamingUrl])
+  
   return (
     <div className="container">
       <Head>
@@ -11,33 +19,18 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Teste de streaming
         </h1>
-
-        <p className="description">This is an example with HLS.js</p>
-
+        <input onChange={(event) => {
+          setStreamingUrl(event.target.value)
+        }}></input>
         <div className="grid">
-          <VideoPlayer src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" />
+          <VideoPlayer src={streamingUrl} />
         </div>
       </main>
 
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=with-hls-js&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-        <div className="separator">.</div>
-        <a
-          href="https://mux.com?utm_source=create-next-app&utm_medium=with-hls-js&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Video by <img src="/mux.svg" alt="Mux Logo" className="logo" />
-        </a>
+        <p>Made with love</p>
       </footer>
 
       <style jsx>{`
@@ -168,3 +161,4 @@ export default function Home() {
     </div>
   )
 }
+
