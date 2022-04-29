@@ -26,7 +26,7 @@ export default function VideoPlayer({ src }) {
 
   return (
     <>
-      <video ref={videoRef} />
+      <video autoPlay playsinline ref={videoRef} />
       <style jsx>{`
         video {
           max-width: 100%;
